@@ -2281,35 +2281,16 @@ public class RedisUtil{
     }
 
     /**
-     * 返还到连接池
+     * 返还到连接池  jedisPool.returnResource(jedis);
      *
      * @param jedisPool
      * @param jedis
      */
     public static void returnResource(JedisPool jedisPool, Jedis jedis) {
         if (jedis != null) {
-//            jedisPool.returnResource(jedis);
-            ////如果使用JedisPool，那么close操作不是关闭连接，代表归还连接池
             jedisPool.close();
         }
     }
 
-    // public static RedisUtil getRu() {
-    // return ru;
-    // }
-    //
-    // public static void setRu(RedisUtil ru) {
-    // RedisUtil.ru = ru;
-    // }
 
-    public static void main(String[] args) {
-		/*JedisPool jedisPool = new JedisPool(null,"localhost",6379,100,"123456");
-		Jedis jedis = jedisPool.getResource();
-		//r.get("", RedisConstants.datebase4);
-		jedis.select(RedisConstants.datebase4);
-		Set<String> str =  jedis.keys("*");
-		for (String string : str) {
-			System.out.println(string);
-		}*/
-    }
 }

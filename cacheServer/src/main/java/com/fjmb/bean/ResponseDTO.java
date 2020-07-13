@@ -2,6 +2,9 @@ package com.fjmb.bean;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,9 +14,16 @@ import java.util.Map;
  **/
 @Data
 public class ResponseDTO {
-    private String resultMsg = "FAIL";
-    private int resultCode = 0;
-    private Map<String,Object> data;
-    private Object object;
+    private String resultMsg ;
+    private Integer resultCode;
+    private Map<String, Object> data;
+
+    /**
+     * 给 resultMsg、resultCode 默认初始化
+     */
+    public ResponseDTO() {
+        this.resultMsg = ResultMsg.FAIL;
+        this.resultCode = ResultCode.FAIL;
+    }
 }
 

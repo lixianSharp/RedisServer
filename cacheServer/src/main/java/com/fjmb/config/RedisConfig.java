@@ -14,6 +14,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * redis配置类
+ * @author lxy
  */
 @Configuration
 @PropertySource("classpath:redis.properties")
@@ -41,7 +42,11 @@ public class RedisConfig {
     @Value("${spring.redis.block-when-exhausted}")
     private boolean  blockWhenExhausted;
 
-    //RedisUtil
+    /**
+     * RedisUtil
+     * @return
+     * @throws Exception
+     */
     @Bean
     public JedisPool redisPoolFactory()  throws Exception{
         log.info("JedisPool注入成功！！");
@@ -57,12 +62,17 @@ public class RedisConfig {
         return jedisPool;
     }
 
-    //RedisUtil2
-    //还是使用springboot默认配置的RedisConnectionFactory
+    /**
+     * RedisUtil2
+     * 还是使用springboot默认配置的RedisConnectionFactory
+     */
    @Autowired
     private RedisConnectionFactory redisConnectionFactory;
 
-    // 默认用的是用JdkSerializationRedisSerializer进行序列化的
+    /**
+     * 默认用的是用JdkSerializationRedisSerializer进行序列化的
+     * @return
+     */
     @Bean
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public RedisTemplate<String, Object> redisTemplate() {
